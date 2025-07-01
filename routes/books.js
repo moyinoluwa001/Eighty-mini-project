@@ -17,10 +17,9 @@ let books = [
 // GET all books
 router.get('/', (req, res) => {
   res.status(200).json(books);
-  
 });
 
-// GET one book
+// GET one book by ID
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const book = books.find(b => b.id === id);
@@ -28,24 +27,22 @@ router.get('/:id', (req, res) => {
   res.status(200).json(book);
 });
 
-// POST a new book
+// CREATE a new book
 router.post('/', (req, res) => {
   const { title, author } = req.body;
   if (!title || !author) {
     return res.status(400).json({ message: 'Title and author are required' });
   }
-
   const newBook = {
     id: books.length ? books[books.length - 1].id + 1 : 1,
     title,
     author
   };
-
   books.push(newBook);
   res.status(201).json(newBook);
 });
 
-// PUT update a book
+// UPDATE a book
 router.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const book = books.find(b => b.id === id);
@@ -61,13 +58,10 @@ router.put('/:id', (req, res) => {
 // DELETE a book
 router.delete('/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const initialLength = books.length;
-  books = books.filter(b => b.id !== id);
+  const index = books.findIndex(b => b.id === id);
+  if (index === -1) return res.status(404).json({ message: 'Book not found' });
 
-  if (books.length === initialLength) {
-    return res.status(404).json({ message: 'Book not found' });
-  }
-
+  books.splice(index, 1);
   res.status(200).json({ message: 'Book deleted successfully' });
 });
 

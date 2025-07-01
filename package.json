@@ -1,13 +1,15 @@
 {
   "name": "simple-express-api",
   "version": "1.0.0",
+  "description": "A Node.js and Express RESTful API for managing books",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Add some tests!\" && exit 0"
   },
   "author": "Abdulrahmon",
   "license": "ISC",
-  "description": "A simple rest api built with node.js, express.js",
   "dependencies": {
     "express": "^5.1.0"
   }
