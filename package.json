@@ -1,0 +1,14 @@
+{
+  "name": "simple-express-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdulrahmon",
+  "license": "ISC",
+  "description": "A simple rest api built with node.js, express.js",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
